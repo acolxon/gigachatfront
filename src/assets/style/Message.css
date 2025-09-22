@@ -1,0 +1,23 @@
+.message_block {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+    max-width: 300px;
+    padding: 10px 14px;
+    background-color: #3795bd;
+    border-radius: 10px;
+    border-bottom-right-radius: 0;
+}
+
+.message_text {
+    font-size: 14px;
+    color: #fff;
+    margin: 0;
+}
+
+.message_time {
+    font-size: 12px;
+    color: #fff;
+    text-align: right;
+    margin: 0;
+}
