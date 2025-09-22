@@ -1,20 +1,21 @@
 .message-wrapper {
     display: flex;
+    flex-direction: column;
     justify-content: center;
     align-items: flex-start;
     padding: 20px;
-    background: #f5f7fa; /* светлый фон */
-    min-height: 100vh;
+    background: #f7f7f8; /* светлый фон */
+    min-width: 200px;
+    width: 100%;
+    margin: 0 auto;
 }
 
 .container {
+    max-width: 840px;
     width: 100%;
-    max-width: 600px;
-    background: #fff;
-    border-radius: 12px;
-    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
     padding: 16px;
     display: flex;
     flex-direction: column;
-    gap: 12px; /* отступы между сообщениями */
+    gap: 12px;
+    margin: 0 auto;
 }

@@ -4,9 +4,7 @@
     gap: 4px;
     max-width: 300px;
     padding: 10px 14px;
-    background-color: #3795bd;
     border-radius: 10px;
-    border-bottom-right-radius: 0;
 }
 
 .message_text {
@@ -20,4 +18,19 @@
     color: #fff;
     text-align: right;
     margin: 0;
+}
+
+/* 🔹 Сообщения от меня */
+.message_block.me {
+    align-self: flex-end;
+    background-color: #3795bd; /* синий пузырь */
+    border-bottom-right-radius: 0;
+}
+
+/* 🔹 Сообщения от других */
+.message_block.other {
+    align-self: flex-start;
+    background-color: #6e6e6e; /* серый пузырь */
+    color: #000;
+    border-bottom-left-radius: 0;
 }
