@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import { useNavigate } from "react-router-dom";
 
 function Register() {
     const [username, setUsername] = useState("");
@@ -6,12 +7,16 @@ function Register() {
     const [password2, setPassword2] = useState("");
     const [message, setMessage] = useState("");
 
+    const navigate = useNavigate();
+
     const handleSubmit = async (e) => {
         e.preventDefault();
         setMessage("");
 
         if (username.length < 3) {
-            return setMessage("Имя пользователя должно быть минимум 3 символа.");
+            return setMessage(
+                "Имя пользователя должно быть минимум 3 символа."
+            );
         }
         if (password.length < 6) {
             return setMessage("Пароль должен быть минимум 6 символов.");
@@ -21,11 +26,14 @@ function Register() {
         }
 
         try {
-            const res = await fetch("https://gigachat-ydne.onrender.com/api/auth/register", {
-                method: "POST",
-                headers: { "Content-Type": "application/json" },
-                body: JSON.stringify({ username, password }),
-            });
+            const res = await fetch(
+                "https://gigachat-ydne.onrender.com/api/auth/register",
+                {
+                    method: "POST",
+                    headers: { "Content-Type": "application/json" },
+                    body: JSON.stringify({ username, password }),
+                }
+            );
 
             const data = await res.json();
             if (res.ok) {
@@ -34,7 +42,9 @@ function Register() {
                 setPassword("");
                 setPassword2("");
             } else {
-                setMessage("❌ Ошибка: " + (data.error || "Что-то пошло не так"));
+                setMessage(
+                    "❌ Ошибка: " + (data.error || "Что-то пошло не так")
+                );
             }
         } catch (err) {
             setMessage("❌ Ошибка подключения к серверу");
@@ -44,7 +54,9 @@ function Register() {
     return (
         <div className="flex items-center justify-center min-h-screen bg-gray-100">
             <div className="w-full max-w-md p-8 bg-white rounded-xl shadow-lg">
-                <h2 className="text-2xl font-bold text-center mb-6">Регистрация</h2>
+                <h2 className="text-2xl font-bold text-center mb-6">
+                    Регистрация
+                </h2>
                 <form onSubmit={handleSubmit} className="space-y-4">
                     <input
                         type="text"
@@ -77,8 +89,16 @@ function Register() {
                         Зарегистрироваться
                     </button>
                 </form>
+                <button
+                    className="w-full py-2 mt-3 bg-gray-200 text-gray-700 rounded-lg hover:bg-gray-300 transition"
+                    onClick={() => navigate("/login")}
+                >
+                    Уже есть аккаунт?
+                </button>
                 {message && (
-                    <p className="mt-4 text-center text-sm text-gray-700">{message}</p>
+                    <p className="mt-4 text-center text-sm text-gray-700">
+                        {message}
+                    </p>
                 )}
             </div>
         </div>

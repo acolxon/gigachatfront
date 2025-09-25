@@ -1,13 +1,22 @@
 // src/components/Profile.jsx
+import { useEffect, useState } from "react";
 import { useNavigate, Link } from "react-router-dom";
+import Loader from "../components/Loader";
 
 export default function Profile() {
     const navigate = useNavigate();
-    const user = {
-        name: "John Smith",
-        email: "john.smith@example.com",
-        status: "Онлайн",
-    };
+
+    const [user, setUser] = useState();
+    const [loading, setLoading] = useState(true);
+    useEffect(() => {
+        handleUsersData();
+    }, []);
+
+    // const user = {
+    //     name: "John Smith",
+    //     email: "john.smith@example.com",
+    //     status: "Онлайн",
+    // };
 
     const handleLogout = () => {
         // 1. Удаляем токен
@@ -19,25 +28,50 @@ export default function Profile() {
         // 3. Редирект на страницу логина
         navigate("/login");
     };
+
+    const handleUsersData = async () => {
+        const token = localStorage.getItem("token");
+        try {
+            const res = await fetch(
+                "https://gigachat-ydne.onrender.com/api/users/me",
+                {
+                    method: "GET",
+                    headers: {
+                        "Content-Type": "application/json",
+                        Authorization: `Bearer ${token}`,
+                    },
+                }
+            );
+
+            const data = await res.json();
+            console.log(data);
+            if (res.ok) {
+                setUser(data);
+                setLoading(false);
+            } else {
+            }
+        } catch (err) {}
+    };
+    if (loading) return <Loader />;
     return (
         <div className="flex flex-col items-center justify-center min-h-screen bg-gradient-to-br from-blue-100 via-white to-blue-50 p-6">
             <div className="bg-white shadow-2xl rounded-2xl p-8 w-full max-w-md text-center relative">
                 {/* Аватар */}
                 <div className="w-24 h-24 mx-auto rounded-full bg-blue-500 flex items-center justify-center text-white text-3xl font-bold shadow-md">
-                    {user.name[0]}
+                    {/* {user.name[0]} */}
                 </div>
 
                 {/* Имя */}
                 <h2 className="mt-4 text-2xl font-bold text-gray-800">
-                    {user.name}
+                    {user.username}
                 </h2>
 
                 {/* Email */}
-                <p className="text-gray-500">{user.email}</p>
+                {/* <p className="text-gray-500">{user.email}</p> */}
 
                 {/* Статус */}
                 <span className="inline-block mt-2 px-3 py-1 bg-green-100 text-green-600 rounded-full text-sm font-medium">
-                    {user.status}
+                    {/* {user.status} */}
                 </span>
 
                 {/* Статистика */}

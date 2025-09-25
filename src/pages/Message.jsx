@@ -1,65 +1,10 @@
 import { Link } from "react-router-dom";
+import SideBar from "../components/SideBar";
 
 export default function Message() {
     return (
         <div className="flex h-screen bg-gradient-to-br from-blue-50 to-white">
-            {/* Сайдбар */}
-            <aside className="w-72 bg-white shadow-lg rounded-r-2xl flex flex-col my-2">
-                {/* Заголовок */}
-                <div className="p-5 text-lg font-semibold text-gray-800 bg-gray-50 rounded-tl-md rounded-tr-md">
-                    Чаты
-                </div>
-                {/* Список чатов */}
-                <div className="flex-1 overflow-y-auto space-y-2 p-4">
-                    <div className="flex items-center p-4 rounded-xl bg-gray-50 hover:bg-gray-100 cursor-pointer">
-                        {/* Аватар */}
-                        <div className="w-10 h-10 rounded-full bg-blue-400 flex items-center justify-center text-white font-bold">
-                            Д
-                        </div>
-                        {/* Текст */}
-                        <div className="ml-3">
-                            <p className="font-medium text-gray-800">Друг</p>
-                            <p className="text-sm text-gray-500">Здарова 👊</p>
-                        </div>
-                    </div>
-                    <div className="flex items-center p-4 rounded-xl bg-gray-50 hover:bg-gray-100 cursor-pointer">
-                        {/* Аватар */}
-                        <div className="w-10 h-10 rounded-full bg-blue-400 flex items-center justify-center text-white font-bold">
-                            Д
-                        </div>
-                        {/* Текст */}
-                        <div className="ml-3">
-                            <p className="font-medium text-gray-800">Друг</p>
-                            <p className="text-sm text-gray-500">Здарова 👊</p>
-                        </div>
-                    </div>
-                    <div className="flex items-center p-4 rounded-xl bg-gray-50 hover:bg-gray-100 cursor-pointer">
-                        {/* Аватар */}
-                        <div className="w-10 h-10 rounded-full bg-blue-400 flex items-center justify-center text-white font-bold">
-                            Д
-                        </div>
-                        {/* Текст */}
-                        <div className="ml-3">
-                            <p className="font-medium text-gray-800">Друг</p>
-                            <p className="text-sm text-gray-500">Здарова 👊</p>
-                        </div>
-                    </div>
-                </div>
-
-                {/* Футер */}
-                <Link
-                    to="/profile"
-                    className="flex items-center p-4 text-sm text-gray-700 bg-gray-50 rounded-br-2xl hover:bg-gray-100 transition"
-                >
-                    {/* Аватар */}
-                    <div className="w-8 h-8 rounded-full bg-blue-500 flex items-center justify-center text-white font-bold">
-                        J
-                    </div>
-                    {/* Имя */}
-                    <span className="ml-2">John Smith</span>
-                </Link>
-            </aside>
-
+            <SideBar />
             {/* Окно сообщений */}
             <main className="flex-1 flex flex-col bg-white shadow-lg rounded-l-2xl mx-4 my-2">
                 {/* Заголовок чата */}
