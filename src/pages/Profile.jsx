@@ -8,24 +8,13 @@ export default function Profile() {
 
     const [user, setUser] = useState();
     const [loading, setLoading] = useState(true);
+
     useEffect(() => {
         handleUsersData();
     }, []);
 
-    // const user = {
-    //     name: "John Smith",
-    //     email: "john.smith@example.com",
-    //     status: "Онлайн",
-    // };
-
     const handleLogout = () => {
-        // 1. Удаляем токен
         localStorage.removeItem("token");
-
-        // 2. Можно подчистить еще какие-то данные юзера (если хранишь)
-        // localStorage.removeItem("user");
-
-        // 3. Редирект на страницу логина
         navigate("/login");
     };
 
@@ -58,7 +47,7 @@ export default function Profile() {
             <div className="bg-white shadow-2xl rounded-2xl p-8 w-full max-w-md text-center relative">
                 {/* Аватар */}
                 <div className="w-24 h-24 mx-auto rounded-full bg-blue-500 flex items-center justify-center text-white text-3xl font-bold shadow-md">
-                    {/* {user.name[0]} */}
+                    {user.username[0].toUpperCase()}
                 </div>
 
                 {/* Имя */}
@@ -71,7 +60,7 @@ export default function Profile() {
 
                 {/* Статус */}
                 <span className="inline-block mt-2 px-3 py-1 bg-green-100 text-green-600 rounded-full text-sm font-medium">
-                    {/* {user.status} */}
+                    {user._id}
                 </span>
 
                 {/* Статистика */}

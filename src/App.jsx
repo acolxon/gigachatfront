@@ -1,5 +1,5 @@
 import { useState } from "react";
-import Message from "./pages/Message.jsx";
+import MainPage from "./pages/MainPage.jsx";
 import Register from "./auth/Register.jsx";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import Login from "./auth/Login.jsx";
@@ -36,7 +36,7 @@ export default function App() {
                         path="/"
                         element={
                             <PrivateRoute>
-                                <Message />
+                                <MainPage />
                             </PrivateRoute>
                         }
                     />
