@@ -6,6 +6,7 @@ import Login from "./auth/Login.jsx";
 import Profile from "./pages/Profile.jsx";
 import PrivateRoute from "./components/PrivateRoute.jsx";
 import PublicRoute from "./components/PublicRoute.jsx";
+import Test from "./components/test.jsx";
 export default function App() {
     const [activeChat, setActiveChat] = useState(null);
 
@@ -30,6 +31,8 @@ export default function App() {
                             </PublicRoute>
                         }
                     />
+
+                    <Route path="/test" element={<Test />} />
 
                     {/* Приватные маршруты */}
                     <Route
