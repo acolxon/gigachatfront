@@ -5,9 +5,11 @@ import EmptyChat from "./EmptyChat";
 import Input from "./Input";
 
 export default function ChatWindow({ chat, user }) {
-    const [messages, setMessage] = useState([]);
+    const [messages, setMessages] = useState([]);
     const [loader, setLoader] = useState(false);
     const [inputText, setInputText] = useState("");
+
+    // const socket = io("https://gigachat-ydne.onrender.com");
 
     useEffect(() => {
         if (!chat?._id) {
@@ -29,7 +31,7 @@ export default function ChatWindow({ chat, user }) {
                         }
                     );
                     const data = await res.json();
-                    setMessage(data);
+                    setMessages(data);
                     setLoader(false);
                 }
             } catch (error) {
@@ -39,6 +41,10 @@ export default function ChatWindow({ chat, user }) {
 
         handleChatMessage();
     }, [chat]);
+
+    // useEffect(() => {
+    //     socket.on("message", (msg) => setMessages((prev) => [...prev, msg]));
+    // }, []);
 
     if (loader) {
         return (
@@ -91,7 +97,7 @@ export default function ChatWindow({ chat, user }) {
                             }
                         );
                         // После отправки обновляем сообщения
-                        setMessage((prev) => [
+                        setMessages((prev) => [
                             ...prev,
                             { text, senderId: user },
                         ]);
